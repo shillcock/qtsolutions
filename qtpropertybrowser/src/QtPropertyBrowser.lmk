@@ -1,0 +1,51 @@
+require "lmkQt"
+lmkQt.set_name "QtPropertyBrowser"
+lmk.set_type "shared"
+lmk.add_files {"qtpropertybrowser.qrc"}
+
+lmk.add_files {
+   "qtpropertybrowser.h",
+   "qtpropertymanager.h",
+   "qteditorfactory.h",
+   "qtvariantproperty.h",
+   "qttreepropertybrowser.h",
+   "qtbuttonpropertybrowser.h",
+   "qtgroupboxpropertybrowser.h",
+   "qtpropertybrowserutils_p.h",
+}
+
+lmk.add_files ({
+   "qtpropertybrowser.h",
+   "qtpropertymanager.h",
+   "qteditorfactory.h",
+   "qtvariantproperty.h",
+   "qttreepropertybrowser.h",
+   "qtbuttonpropertybrowser.h",
+   "qtgroupboxpropertybrowser.h",
+},{src="moc-only"})
+
+lmk.add_files ({
+   "qtpropertybrowserutils_p.h",
+},{src="moc"})
+
+lmk.add_files {
+   "qtpropertybrowser.cpp",
+   "qtpropertymanager.cpp",
+   "qteditorfactory.cpp",
+   "qtvariantproperty.cpp",
+   "qttreepropertybrowser.cpp",
+   "qtbuttonpropertybrowser.cpp",
+   "qtgroupboxpropertybrowser.cpp",
+   "qtpropertybrowserutils.cpp",
+}
+
+lmkQt.add_libs {"QtCore","QtGui",}
+
+lmk.add_vars {
+   localIncludes = "$(lmk.includePathFlag)$(localTmpDir)",
+}
+
+lmk.add_vars ({
+   localDefines = "$(lmk.defineFlag)QT_QTPROPERTYBROWSER_EXPORT"
+}, {win32 = true})
+
